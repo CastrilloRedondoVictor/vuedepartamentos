@@ -17,9 +17,9 @@
                     <td>{{ departamento.nombre }}</td>
                     <td>{{ departamento.localidad }}</td>
                     <td>
-                        <button class="btn btn-sm btn-outline-primary m-2" @click="editarDepartamento(departamento.idDepartamento)">Editar</button>
-                        <button class="btn btn-sm btn-outline-info m-2" @click="verDepartamento(departamento.idDepartamento)">Ver</button>
-                        <button class="btn btn-sm btn-outline-danger m-2" @click="borrarDepartamento(departamento.idDepartamento)">Borrar</button>
+                        <router-link :to="`/update/${departamento.idDepartamento}`" class="btn btn-sm btn-outline-primary m-2">Editar</router-link>
+                        <router-link :to="`/get/${departamento.idDepartamento}`" class="btn btn-sm btn-outline-info m-2">Ver</router-link>
+                        <router-link :to="`/delete/${departamento.idDepartamento}`" class="btn btn-sm btn-outline-danger m-2">Borrar</router-link>
                     </td>
                 </tr>
             </tbody>
@@ -47,18 +47,20 @@ var departamentosService = new DepartamentosService();
                     this.departamentos = response
                 })
             },
-            editarDepartamento(id) {
-                this.$router.push(`/update/${id}`)
-            },
-            borrarDepartamento(id){
-                this.$router.push(`/delete/${id}`)
-            },
-            verDepartamento(id){
-                this.$router.push(`/get/${id}`)
-            }
+            // editarDepartamento(id) {
+            //     this.$router.push(`/update/${id}`)
+            // },
+            // borrarDepartamento(id){
+            //     this.$router.push(`/delete/${id}`)
+            // },
+            // verDepartamento(id){
+            //     this.$router.push(`/get/${id}`)
+            // }
         },
         mounted() {
-            this.getDepartamentos()
+            departamentosService.getDepartamentos.then(response => {
+                    this.departamentos = response
+                })
         },
     }
 </script>

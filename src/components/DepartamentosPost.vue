@@ -42,7 +42,7 @@
 </template>
 <script>
 import DepartamentosService from '@/services/DepartamentosService'
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 var departamentosService = new DepartamentosService();
     export default {
@@ -62,11 +62,11 @@ var departamentosService = new DepartamentosService();
                     localidad: this.localidad
                 }
                 departamentosService.postDepartamento(data).then( response => {
-                    Swal.fire(
-                        'Añadido',
-                        'El departamento ha sido añadido.',
-                        'success'
-                    );
+                    // Swal.fire(
+                    //     'Añadido',
+                    //     'El departamento ha sido añadido.',
+                    //     'success'
+                    // );
                     console.log(response)
                     this.$router.push('/');
                 }
